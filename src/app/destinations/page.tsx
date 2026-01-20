@@ -22,7 +22,8 @@ export default function DestinationsPage() {
   useEffect(() => {
     const fetchDestinations = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/destinations');
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+        const response = await fetch(`${apiUrl}/api/destinations`);
         if (response.ok) {
           const data = await response.json();
           setDestinations(data);
